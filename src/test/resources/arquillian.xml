@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<arquillian xmlns="http://jboss.org/schema/arquillian" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+
+    <engine>
+        <property name="deploymentExportPath">target/deployments</property>
+    </engine>
+
+    <container qualifier="wildfly-managed" default="true">
+        <configuration>
+            <property name="allowConnectingToRunningServer">true</property>
+            <property name="javaHome">/usr/lib/jvm/java-7-openjdk</property>
+        </configuration>
+    </container>
+    <container qualifier="wildfly-managed-debug">
+        <configuration>
+            <property name="allowConnectingToRunningServer">true</property>
+            <!-- To run these tests without debugging you MUST comment out the following Arquillian property -->
+            <property name="javaVmArguments">-Xmx1024m -XX:MaxPermSize=512m -Xnoagent -Djava.compiler=NONE -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005</property>
+        </configuration>
+    </container>
+
+    <!--extension qualifier="spring"-->
+        <!--property name="springVersion">${spring.version}</property-->
+        <!-- Disables the auto package allowing to add all the dependencies through the test -->
+        <!-- Spring Release 4.0 JAR are already present in WAR build by ShrinkWrap, so no need to add again and hence
+        autopackage is set to false -->
+        <!--property name="autoPackage">false</property>
+    </extension-->
+</arquillian>
