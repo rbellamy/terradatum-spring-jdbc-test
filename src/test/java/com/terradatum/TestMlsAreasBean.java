@@ -57,7 +57,6 @@ public class TestMlsAreasBean {
                         MlsAreasDAO.class,
                         JdbcMlsAreasDAO.class,
                         JULProducer.class)
-                .addAsManifestResource("MANIFEST.MF")
                 .addAsWebInfResource("applicationContext.xml")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
                 .addAsLibraries(files);
